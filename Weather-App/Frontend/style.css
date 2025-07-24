@@ -1,0 +1,461 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+}
+
+body {
+    background-image: url("./assets/bg.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    background-position: center;
+    backdrop-filter: blur(10px);
+    display: flex;
+    gap: 80px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100dvh;
+    background-color: rgb(0, 0, 0, 0.15);
+
+}
+
+#analysis-report {
+    position: relative;
+    border-radius: 20px;
+    padding: 30px;
+    height: 85vh;
+    width: 60vw;
+    max-width: 1000px;
+    min-width: 320px;
+    z-index: 10;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.1));
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: hidden;
+}
+
+.analysis-header {
+    text-align: center;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+}
+
+.analysis-header h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.prediction-text {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+}
+
+.chart-container {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: hidden;
+    min-height: 0;
+}
+
+.slider {
+    flex: 1;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    margin-bottom: -20px;
+}
+
+.slider section {
+    min-width: 100%;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex-shrink: 0;
+    min-height: 0;
+}
+
+.slider section h3 {
+    text-align: center;
+    font-size: clamp(16px, 2vw, 20px);
+    color: #ffffff;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+}
+
+.slider section canvas {
+    flex: 1;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: none;
+    object-fit: contain;
+    min-height: 0;
+}
+
+.chart-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    position: relative;
+    z-index: 2;
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+.next,
+.previous {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    width: clamp(35px, 4vw, 40px);
+    height: clamp(35px, 4vw, 40px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+    flex-shrink: 0;
+}
+
+.next:hover,
+.previous:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.chart-dots {
+    display: flex;
+    gap: clamp(8px, 1vw, 10px);
+}
+
+.dot {
+    width: clamp(6px, 1vw, 8px);
+    height: clamp(6px, 1vw, 8px);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.dot.active {
+    background: white;
+    transform: scale(1.2);
+}
+
+@media (max-width: 1200px) {
+    #analysis-report {
+        width: 70vw;
+        max-height: 700px;
+    }
+}
+
+@media (max-width: 992px) {
+    #analysis-report {
+        width: 80vw;
+    }
+}
+
+@media (max-width: 768px) {
+    #analysis-report {
+        width: 90vw;
+        height: 70vh;
+        padding: 15px;
+    }
+
+    .slider section {
+        padding: 10px;
+    }
+
+    .analysis-header h2 {
+        font-size: clamp(18px, 4vw, 24px);
+    }
+
+    .prediction-text {
+        font-size: clamp(14px, 3vw, 18px);
+    }
+
+    .chart-navigation {
+        padding: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    #analysis-report {
+        width: 95vw;
+        height: 55vh;
+        padding: 10px;
+    }
+
+    .slider section {
+        padding: 5px;
+    }
+
+    .chart-navigation {
+        gap: 10px;
+    }
+}
+
+@media (max-height: 600px) {
+    #analysis-report {
+        height: 90vh;
+    }
+
+    .analysis-header {
+        margin-bottom: 10px;
+    }
+
+    .slider section {
+        padding: 5px;
+    }
+}
+
+.in-container {
+    width: 350px;
+    height: 500px;
+    background: linear-gradient(to top, rgb(0, 0, 0, 0.15), rgb(255, 255, 255, 0.15));
+    backdrop-filter: blur(100px);
+    border-radius: 15px;
+    padding: 15px;
+    overflow: hidden;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    background-color: rgb(0, 0, 0, 0.15);
+    color: rgba(255, 255, 255, 0.893);
+    font-size: 15px;
+    padding-left: 20px;
+}
+
+.input-container input::placeholder {
+    color: rgba(255, 255, 255, 0.667);
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.input-container input:focus::placeholder {
+    color: transparent;
+}
+
+/* Jaise humein search button chahiye input ke andar to sabke pehle to hum search button ki position ko absolute kar denge then input ki position ko relative kar denge. 
+Then use top,left,bottom,right or translateX() etc
+Though, I have not implemented that here yet
+*/
+
+.search-button {
+    position: absolute;
+    right: 28px;
+    background: none;
+    border: none;
+    top: 26px;
+    color: rgb(255, 255, 255, 0.75);
+    cursor: pointer;
+}
+
+.weather-section {
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+}
+
+.location-date-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.regular-txt {
+    font-weight: 400;
+}
+
+.weather-summary {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.weather-summary img {
+    height: 120px;
+    width: 120px;
+}
+
+.weather-temp {
+    align-items: end;
+}
+
+.humidity-wind-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.humidity,
+.wind-speed {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.humidity span,
+.wind-speed span {
+    font-size: 30px
+}
+
+.forecast-container {
+    display: flex;
+    gap: 8px;
+    overflow-x: scroll;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 15px;
+    padding-bottom: 12px;
+}
+
+.forecast-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.forecast-container::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.098);
+    border-radius: 99px;
+
+}
+
+.forecast-container::-webkit-scrollbar-thumb {
+    background-color: rgba(151, 151, 151, 0.129);
+    border-radius: 99px;
+
+}
+
+.forecast-item {
+    min-width: 70px;
+    background-color: rgb(0, 0, 0, 0.25);
+    border-radius: 10px;
+    padding: 5px 8px;
+    transition: all 0.19s ease;
+
+}
+
+.forecast-item:hover {
+    background-color: rgba(123, 122, 122, 0.15);
+    transform: scale(1.1);
+
+}
+
+.forecast-container img {
+    width: 40px;
+    height: 40px;
+}
+
+.search-city {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 35px;
+}
+
+.search-city img {
+    width: fit-content;
+    height: 200px;
+}
+
+.search-city-text {
+    text-align: center;
+}
+
+.search-city-text p {
+    font-weight: 350;
+    margin-top: 10px;
+}
+
+.not-found-section {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.not-found-section img {
+    width: fit-content;
+    height: 200px;
+}
+
+.not-found-text {
+    text-align: center;
+}
+
+.not-found-text p {
+    font-weight: 350;
+    margin-top: 10px;
+}
+
+.temperature {
+    font-size: 50px;
+    font-weight: 400;
+    font-size: "Poppins";
+}
+
+#analysis-report {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#prediction {
+    font-size: 1.2em;
+    color: white;
+    margin-bottom: 10px;
+}
+
+/* #trend-graph {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 15px;
+} */

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
+  </head>
+
+  <body>
+    <link rel="preload" href="./assets/bg.jpg" as="image" />
+    <main class="in-container">
+      <header class="input-container">
+        <input type="search" placeholder="Enter a city" />
+        <button class="search-button">
+          <span class="material-symbols-outlined"> search </span>
+        </button>
+      </header>
+      <section class="weather-section" style="display: none">
+        <div class="location-date-container">
+          <div class="location">
+            <span class="material-symbols-outlined"> location_on </span>
+            <h3 class="location-name">Location</h3>
+          </div>
+          <div class="date">
+            <h3 class="current-date regular-txt">Tue, Dec 09</h3>
+          </div>
+        </div>
+        <div class="weather-summary">
+          <img src="assets/weather/clouds.svg" />
+          <div class="weather-temp">
+            <h1 class="temperature">29°C</h1>
+            <h3 class="weather-condition regular-txt">Cloudy</h3>
+          </div>
+        </div>
+        <div class="humidity-wind-container">
+          <div class="humidity">
+            <span class="material-symbols-outlined"> water_drop </span>
+            <div class="humidity-icon-text">
+              <h4 class="humidity-txt regular-txt">Humidity</h4>
+              <h4 class="humidity-value">55%</h4>
+            </div>
+          </div>
+          <div class="wind-speed">
+            <span class="material-symbols-outlined"> air </span>
+            <div class="wind-icon-text">
+              <h4 class="humidity-txt regular-txt">Wind Speed</h4>
+              <h4 class="wind-value">5 M/s</h4>
+            </div>
+          </div>
+        </div>
+        <div class="forecast-container">
+          <div class="forecast-item">
+            <h4 class="forecast-date regular-txt">10 Dec</h4>
+            <img src="assets/weather/rain.svg" />
+            <h4 class="forecast-temp regular-txt">22°C</h4>
+          </div>
+          <div class="forecast-item">
+            <h4 class="forecast-date regular-txt">10 Dec</h4>
+            <img src="assets/weather/rain.svg" />
+            <h4 class="forecast-temp regular-txt">22°C</h4>
+          </div>
+          <div class="forecast-item">
+            <h4 class="forecast-date regular-txt">10 Dec</h4>
+            <img src="assets/weather/rain.svg" />
+            <h4 class="forecast-temp regular-txt">22°C</h4>
+          </div>
+          <div class="forecast-item">
+            <h4 class="forecast-date regular-txt">10 Dec</h4>
+            <img src="assets/weather/rain.svg" />
+            <h4 class="forecast-temp regular-txt">22°C</h4>
+          </div>
+          <div class="forecast-item">
+            <h4 class="forecast-date regular-txt">10 Dec</h4>
+            <img src="assets/weather/rain.svg" />
+            <h4 class="forecast-temp regular-txt">22°C</h4>
+          </div>
+        </div>
+      </section>
+      <section class="search-city">
+        <img src="assets/message/search-city.png" />
+        <div class="search-city-text">
+          <h2>Search City</h2>
+          <p>Select a city and find out it's weather conditions.</p>
+        </div>
+      </section>
+      <section class="not-found-section" style="display: none">
+        <img src="assets/message/not-found.png" />
+        <div class="not-found-text">
+          <h2>City not found</h2>
+          <p>Select a city and find out it's weather conditions.</p>
+        </div>
+      </section>
+    </main>
+    <div id="analysis-report" style="display: none">
+      <div class="analysis-header">
+        <h2>Weather Analysis</h2>
+        <p id="prediction" class="prediction-text"></p>
+      </div>
+      <div class="chart-container">
+        <div class="slider">
+          <section class="graph1">
+            <h3>Temperature Trend</h3>
+            <canvas id="trend-graph"></canvas>
+          </section>
+          <section class="graph2">
+            <h3>Temperature Variation</h3>
+            <canvas id="min-max-graph"></canvas>
+          </section>
+          <section class="graph3">
+            <h3>Humidity & Wind</h3>
+            <canvas id="line-graph"></canvas>
+          </section>
+        </div>
+        <div class="chart-navigation">
+          <button class="previous">
+            <span class="material-symbols-outlined">arrow_back_ios</span>
+          </button>
+          <div class="chart-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+          <button class="next">
+            <span class="material-symbols-outlined">arrow_forward_ios</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
